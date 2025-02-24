@@ -88,4 +88,4 @@ function obtenerTextoAleatorio(miembro, voiceChannel) {
   
 
 //Ultimo mensaje para que se conecte el bot
-client.login("MTMwMzQxMTY0ODA4NTg4OTExNw.GdlrPu.wT7JNRamOf59r5Dx5o1JhzLH8MK15p-buwlWp0");
+client.login("");
