@@ -1,3 +1,4 @@
+const fs = require('fs');
 const {Client, Events, GatewayIntentBits} = require('discord.js');
 const TRACK_VOICE_CHANNELS = [
     "1194078366039552005", 
@@ -17,6 +18,9 @@ const client = new Client({
         GatewayIntentBits.MessageContent
     ]
 }); 
+const tokenData = JSON.parse(fs.readFileSync('../token.json', 'utf8'));
+const token = tokenData.PastafrolaToken;
+
 
 client.on(Events.ClientReady, async () => {
     console.log(`Conectado como ${client.user.username}!`);
@@ -88,4 +92,4 @@ function obtenerTextoAleatorio(miembro, voiceChannel) {
   
 
 //Ultimo mensaje para que se conecte el bot
-client.login("MTMwMzQxMTY0ODA4NTg4OTExNw.GdlrPu.wT7JNRamOf59r5Dx5o1JhzLH8MK15p-buwlWp0");
+client.login(token);

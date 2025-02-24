@@ -1,2 +1,2 @@
 # BotPastafrola
- BotDiscrodRandom
+ Bot de discord random
