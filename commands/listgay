@@ -1,0 +1,43 @@
+const { Client, GatewayIntentBits } = require('discord.js');
+const fs = require('fs');
+const path = require('path');
+        
+const dataFolder = path.join(__dirname, 'Data');
+const dataFile = path.join(dataFolder, 'storage.json');
+
+module.exports = {
+    description: 'Repito lo que dices',
+    run: async (message) => {
+        
+            function loadData() {
+                try {
+                    if (!fs.existsSync(dataFile)) {
+                        return {};
+                    }
+                    const rawData = fs.readFileSync(dataFile, 'utf8').trim();
+                    return rawData ? JSON.parse(rawData) : {};
+                } catch (error) {
+                    console.error('Error al leer el archivo JSON:', error);
+                    return {};
+                }
+            }
+
+            function getListaNombres() {
+                const data = loadData();
+
+                if (Object.keys(data).length === 0) {
+                    return '📂 No hay datos guardados.';
+                }
+
+                return `📜 **Lista de gays guardados:**\n` +
+                    Object.entries(data)
+                        .map(([nombre, contador]) => `📌 **${nombre}** → Contador: **${contador}**`)
+                        .join('\n');
+            }
+
+            const respuesta = getListaNombres();
+            message.channel.send(respuesta);
+
+        
+    }
+}
