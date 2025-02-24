@@ -93,3 +93,4 @@ function obtenerTextoAleatorio(miembro, voiceChannel) {
 
 //Ultimo mensaje para que se conecte el bot
 client.login(token);
+
